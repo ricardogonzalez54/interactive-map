@@ -1,5 +1,7 @@
 // Variable para almacenar el ángulo de rotación en grados
 var rotate_degrees = -27.3 + 90; // Por ejemplo, puedes establecer aquí el ángulo de rotación deseado
+// Variable que controla el movimiento de teclado
+const step= 10;
 
 // Inicializar Mapbox
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGllZ28tY2xiYiIsImEiOiJjbHNjbWZodHEwcWtxMmxxdW13NzkxamV5In0.GpUh5FL_TGYPxXuuAUwvDA';
@@ -9,7 +11,8 @@ var map = new mapboxgl.Map({
     style: 'mapbox://styles/mapbox/dark-v10',
     center: [-73.06180165035789, -36.83121502282673],
     zoom: 15.2,
-    bearing: -27.3 + 90,
+    bearing: rotate_degrees,
+    keyboard: false,
 });
 
 // Agregar control de navegación al mapa
@@ -87,6 +90,24 @@ function printMapState() {
     console.log('Nivel de zoom:', zoom);
     console.log('Rotación:', rotation);
 }
+// Movemos el mapa con teclado usando step y panBy
+document.addEventListener('keydown',function(e){
+    switch (e.key) {
+        case 'ArrowUp':
+          map.panBy([0, -step], { duration: 0 });
+          break;
+        case 'ArrowDown':
+          map.panBy([0, step], { duration: 0 });
+          break;
+        case 'ArrowLeft':
+          map.panBy([-step, 0], { duration: 0 });
+          break;
+        case 'ArrowRight':
+          map.panBy([step, 0], { duration: 0 });
+          break;
+      }
+   
+})
 
 document.addEventListener('keyup',printMapState); // al presionar una tecla imrpimirá centro, zoom y rotation
 
