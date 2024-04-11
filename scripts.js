@@ -1,3 +1,6 @@
+// Variable para almacenar el ángulo de rotación en grados
+var rotate_degrees = -27.3 + 90; // Por ejemplo, puedes establecer aquí el ángulo de rotación deseado
+
 // Inicializar Mapbox
 mapboxgl.accessToken = 'pk.eyJ1IjoiZGllZ28tY2xiYiIsImEiOiJjbHNjbWZodHEwcWtxMmxxdW13NzkxamV5In0.GpUh5FL_TGYPxXuuAUwvDA';
 var map = new mapboxgl.Map({
@@ -6,13 +9,11 @@ var map = new mapboxgl.Map({
     style: 'mapbox://styles/mapbox/dark-v10',
     center: [-73.06180165035789, -36.83121502282673],
     zoom: 15.2,
+    bearing: -27.3 + 90,
 });
 
 // Agregar control de navegación al mapa
 map.addControl(new mapboxgl.NavigationControl());
-
-// Variable para almacenar el ángulo de rotación en grados
-var rotate_degrees = -27.3 + 90; // Por ejemplo, puedes establecer aquí el ángulo de rotación deseado
 
 // Rotar la vista del mapa
 
