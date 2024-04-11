@@ -31,46 +31,46 @@ var draw = new MapboxDraw({
 map.addControl(draw);
 
 // Manejador de evento para el botón de guardar
-document.getElementById('saveButton').addEventListener('click', function() {
-    // Obtener todas las geometrías dibujadas
-    var features = draw.getAll().features;
+// document.getElementById('saveButton').addEventListener('click', function() {
+//     // Obtener todas las geometrías dibujadas
+//     var features = draw.getAll().features;
 
-    // Iterar sobre las geometrías y agregar nombre y categoría
-    features.forEach(function(feature) {
-        // Aquí puedes permitir al usuario ingresar el nombre y la categoría
-        var nombre = prompt("Ingrese el nombre para esta geometría:");
-        var categoria = prompt("Ingrese la categoría para esta geometría:");
+//     // Iterar sobre las geometrías y agregar nombre y categoría
+//     features.forEach(function(feature) {
+//         // Aquí puedes permitir al usuario ingresar el nombre y la categoría
+//         var nombre = prompt("Ingrese el nombre para esta geometría:");
+//         var categoria = prompt("Ingrese la categoría para esta geometría:");
 
-        // Asignar nombre y categoría a las propiedades de la geometría
-        feature.properties = {
-            name: nombre,
-            category: categoria
-        };
+//         // Asignar nombre y categoría a las propiedades de la geometría
+//         feature.properties = {
+//             name: nombre,
+//             category: categoria
+//         };
 
-        // Aquí puedes hacer lo que desees con la geometría, como enviarla a un servidor o guardarla localmente
-        console.log('Geometría dibujada con propiedades:', feature);
-    });
-});
+//         // Aquí puedes hacer lo que desees con la geometría, como enviarla a un servidor o guardarla localmente
+//         console.log('Geometría dibujada con propiedades:', feature);
+//     });
+// });
 
 // Manejador de evento para el botón de dibujar área verde
-document.getElementById('drawGreenAreaButton').addEventListener('click', function() {
-    // Configurar el estilo del polígono
-    var greenPolygonStyle = {
-        'fill-color': '#FF0000', // Relleno verde
-        'fill-opacity': 0.7, // Opacidad del relleno
-        'fill-outline-color': '#FF0000', // Borde verde
-    };
+// document.getElementById('drawGreenAreaButton').addEventListener('click', function() {
+//     // Configurar el estilo del polígono
+//     var greenPolygonStyle = {
+//         'fill-color': '#FF0000', // Relleno verde
+//         'fill-opacity': 0.7, // Opacidad del relleno
+//         'fill-outline-color': '#FF0000', // Borde verde
+//     };
 
-    // Configurar el modo de dibujo del polígono con el estilo personalizado
-    draw.changeMode('draw_polygon', {
-        defaultMode: 'simple_select',
-        polygon: {
-            ...draw.options.modes.draw_polygon,
-            userProperties: true, // Permite propiedades de usuario personalizadas
-            style: greenPolygonStyle // Aplica el estilo personalizado al polígono
-        }
-    });
-});
+//     // Configurar el modo de dibujo del polígono con el estilo personalizado
+//     draw.changeMode('draw_polygon', {
+//         defaultMode: 'simple_select',
+//         polygon: {
+//             ...draw.options.modes.draw_polygon,
+//             userProperties: true, // Permite propiedades de usuario personalizadas
+//             style: greenPolygonStyle // Aplica el estilo personalizado al polígono
+//         }
+//     });
+// });
 
 function printMapState() {
     // Obtener el centro actual del mapa
@@ -87,6 +87,10 @@ function printMapState() {
     console.log('Nivel de zoom:', zoom);
     console.log('Rotación:', rotation);
 }
+
+document.addEventListener('keyup',printMapState); // al presionar una tecla imrpimirá centro, zoom y rotation
+
+
 
 
 
